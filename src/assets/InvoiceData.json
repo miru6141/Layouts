@@ -1,0 +1,1099 @@
+{
+    "company": {
+      "name": "Technix-India Solutions (P) Ltd.",
+      "address":{
+        "area":"Mr Nagar,Phulwari Sharif",
+         "district": "Patna 801505, Bihar"
+      } ,
+      "contact": "+91-9905422245",
+      "website": "www.TechnixIndia.com",
+      "GSTIN": "10AAPPL6439B1ZC",
+      "email":"info@technixindia.com"
+    },
+    "invoice": {
+      "number": "Tax/24-25/1",
+      "date": "30/10/2024",
+      "time": "01:12:18 AM",
+      "transportation": null,
+      "vehicle_number": "BR-123",
+      "place_of_supply": "BIHAR(10)",
+      "reverse_charge":"N",
+      "gr_rr":""
+    },
+    "receiver": {
+      "name": "Rahul Karan Stores",
+      "address":{
+          "area":"NAWADA KALA, VAISHALI,844102",
+          "state":"Bihar, State code:10"
+
+      } ,
+      "contact_person": "Rahul Kumar",
+      "contact_number": "9572039747"
+    },
+    "items": [
+      {
+        "S_N":"1",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"2",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },
+      {
+        "S_N":"3",
+        "description": "Medimix Soap Extra Bar 75 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 35.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 35.00,
+        "gst_rate": 18,
+        "gst_amount": 6.30,
+        "sgst_rate": 18,
+        "sgst_amount": 6.30,
+        "total": 41.30
+      },
+      {
+        "S_N":"4",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"5",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"6",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"7",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"8",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"9",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"10",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"11",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"12",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"13",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"14",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"15",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"16",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"17",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"18",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"19",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"20",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"21",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"22",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"23",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"24",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"25",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"26",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"27",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"28",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"29",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"30",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"31",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"32",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"33",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"34",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"35",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"36",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"37",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"38",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"39",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },{
+        "S_N":"40",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"41",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"42",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"43",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"44",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },{
+        "S_N":"45",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"46",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"47",
+        "description": "Himalaya Neem Soap 100 GM",
+        "hsn": "857496",
+        "quantity": "1 Pcs",
+        "mrp":32.00,
+        "rate": 50.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 50.00,
+        "gst_rate": 18,
+        "gst_amount": 9.00,
+        "total": 59.00
+      },{
+        "S_N":"48",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"49",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },{
+        "S_N":"50",
+        "description": "Kashmir Aara 25 kg",
+        "hsn": "123456",
+        "mrp":50.00,
+        "quantity": "10 Pkt",
+        "rate": 550.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 5500.00,
+        "gst_rate": 5,
+        "gst_amount": 275.00,
+        "total": 5775.00
+      },
+      {
+        "S_N":"51",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"52",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"53",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"54",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"55",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"56",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"57",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"58",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"59",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"60",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"61",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },  {
+        "S_N":"62",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"63",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"64",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }, {
+        "S_N":"65",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      },{
+        "S_N":"66",
+        "description": "Himalaya Lemon Tea Tree Soap 75 GM",
+        "hsn": "857495",
+        "quantity": "1 Pcs",
+        "mrp":600,
+        "rate": 32.00,
+        "discount":{
+          "percentage":0.0,
+          "amt":0.0
+        },
+        "taxable_value": 32.00,
+        "gst_rate": 18,
+        "gst_amount": 5.76,
+        "total": 37.76
+      }
+    ],
+    "totals": {
+      "total_taxable_value": 5617.00,
+      "total_gst_amount": 296.06,
+      "grand_total": 5913.06
+    },
+    "tax":
+    [
+    {
+          "id":1254121,
+          "tax_rate":"6%",
+          "txbl_amt":5188.00,
+          "central_tax":155.66,
+          "State_tax":3.55,
+          "Integrated_Tax":0.00,
+          "total":5500.01,
+          "cgst":2.32,
+          "sgst":2.32,
+          "igst":0.0
+    },
+    {
+      "id":1254122,
+      "tax_rate":"12%",
+      "txbl_amt":5188.00,
+      "central_tax":155.66,
+      "State_tax":3.55,
+      "Integrated_Tax":0.00,
+      "total":156.99,
+      "cgst":2.32,
+      "sgst":2.32,
+      "igst":0.00
+}
+  ],
+  "bankdetails":{
+
+    "name":null,
+    "account_no":440120110000452 ,
+    "bank_name":null,
+    "ifsc_code":"BKID0004401 ",
+    "branch":"PATNA CITY"
+
+
+  },
+  "billinfo":{
+      "bill_no":"21-22/25",
+      "date":"30/10/2024",
+      "time":"01:12:18 AM",
+      "Cashier":"Adminstaro",
+      "mob":987654321,
+      "name":"Rani"
+
+  }
+  }
+  

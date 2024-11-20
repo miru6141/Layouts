@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@layer utilities {
+  @media print and (min-width: 210mm) and (min-height: 297mm) and (orientation: portrait) {
+    .invoice {
+      @apply w-[190mm] text-sm; /* Adjust for A4 Portrait */
+    }
+  }
+  @media print and (min-width: 297mm) and (min-height: 210mm) and (orientation: landscape) {
+    .invoice {
+      @apply w-[277mm] text-sm; /* Adjust for A4 Landscape */
+    }
+  }
+  @media print and (min-width: 148mm) and (min-height: 210mm) and (orientation: portrait) {
+    .invoice {
+      @apply w-[130mm] text-xs; /* Adjust for A5 Portrait */
+    }
+  }
+  @media print and (min-width: 210mm) and (min-height: 148mm) and (orientation: landscape) {
+    .invoice {
+      @apply w-[190mm] text-xs; /* Adjust for A5 Landscape */
+    }
+  }
+}
+
+@layer utilities {
+    @media print {
+      .print\\:hidden {
+        display: none !important;
+      }
+    }
+  }
+  @layer utilities {
+    @media print {
+      .pgbreak {
+        break-after: page;
+      }
+    }
+  }
+  
