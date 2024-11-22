@@ -42,4 +42,21 @@
       }
     }
   }
+  @layer utilities{
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .btn-print {
+      display: none; /* Hide the print button */
+    }
+  
+    .grid {
+      page-break-inside: avoid; /* Prevent breaking the grid */
+    }
+  }
+}
+  
   
