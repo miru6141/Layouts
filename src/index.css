@@ -5,7 +5,7 @@
 
 
 
-@layer utilities {
+   @layer utilities { 
   @media print and (min-width: 210mm) and (min-height: 297mm) and (orientation: portrait) {
     .invoice {
       @apply w-[190mm] text-sm; /* Adjust for A4 Portrait */
@@ -26,7 +26,7 @@
       @apply w-[190mm] text-xs; /* Adjust for A5 Landscape */
     }
   }
-}
+}  
 
 @layer utilities {
     @media print {
@@ -59,4 +59,33 @@
   }
 }
   
-  
+  /* Target the scroll container */
+.scroll-container {
+  width: 870px;
+  height: 530px;
+  overflow-y: auto; /* Enables vertical scrolling */
+  border: 1px solid #ddd;
+  padding: 10x;
+}
+
+/* Style the scroll bar */
+.scroll-container::-webkit-scrollbar {
+  width: 8px; /* Scrollbar width */
+}
+
+/* Style the track (background) */
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Style the thumb (handle) */
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Add hover effect for the thumb */
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -57,7 +57,7 @@ const Ean13A45s = () => {
             
 
       {Array.from({ length: parseInt(input || 0) }, (_, i) => (
-        <div className=" mt-[10px]  w-[47.5mm] h-[39mm]    " key={i}>
+        <div className=" mt-[10px]  w-[47.5mm] h-[39mm]" key={i}>
           {generatedCode && (
             <>
              <p className="text-start mb-2 text-[12px]">{`BLACK CARDAMOM 25 GM`}</p>

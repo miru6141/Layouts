@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import Barcode from "./Barcode";
 import BarcodeData from "./assets/BarcodeData.json";
 
-export const BarcodePreview = () => {
+export const BarcodePreview = ({setting}) => {
   const [settings] = useState({
     rows: 6,
     cols: 5,
@@ -17,25 +17,27 @@ export const BarcodePreview = () => {
     mleft: null,
     mright: null,
   });
+  
+  
 
   const [generatedCode] = useState("123456789101"); // For the generated barcode
 
   const printRef = useRef(null);
 
-  const handlePrint = () => {
-    if (printRef.current) {
-      const printContent = printRef.current.innerHTML;
-      const originalContent = document.body.innerHTML;
+  // const handlePrint = () => {
+  //   if (printRef.current) {
+  //     const printContent = printRef.current.innerHTML;
+  //     const originalContent = document.body.innerHTML;
 
-      // Replace body content with the specific `div` content for printing
-      document.body.innerHTML = `<div style="width: ${settings.Pwidth}px; height: ${settings.Pheight}px; margin: 0 auto;">${printContent}</div>`;
-      window.print();
+  //     // Replace body content with the specific `div` content for printing
+  //     document.body.innerHTML = `<div style="width: ${settings.Pwidth}px; height: ${settings.Pheight}px; margin: 0 auto;">${printContent}</div>`;
+  //     window.print();
 
-      // Restore the original body content after printing
-      document.body.innerHTML = originalContent;
-      window.location.reload(); // Reload to restore events
-    }
-  };
+  //     // Restore the original body content after printing
+  //     document.body.innerHTML = originalContent;
+  //     window.location.reload(); // Reload to restore events
+  //   }
+  // };
 
   return (
     <>

@@ -11,6 +11,7 @@ import Einvoice  from './Einvoice'
 import BarcodeSettings from './BarcodeSettings'
 import GridExample from './GridExample'
 import { BarcodePreview } from './BarcodePreview'
+import { PrintBarcode } from './PrintBarcode'
 function App() {
 
   return (
@@ -22,11 +23,12 @@ function App() {
     {/* <Thermal4inches/> */}
     {/* <Ean_13Barcode/> */}
     {/* <Ean13A45s/> */}
-    {/* <BarcodeLayoutSetting/> */}
+    <BarcodeLayoutSetting/>
     {/* <Einvoice/> */}
     {/* <BarcodeSettings/> */}
     {/* <GridExample/> */}
-    <BarcodePreview/>
+    {/* <BarcodePreview/> */}
+    {/* <PrintBarcode/> */}
     </div>
   
        
