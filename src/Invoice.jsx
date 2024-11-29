@@ -190,8 +190,8 @@ console.log(numberInWords);  // Output: "five thousand five hundred twenty nine 
         {data.rate.toFixed(2)}
       </td>
       <td className='border-l border-black'>
-        <div className='grid grid-cols-2 divide-x divide-black'>
-          <div className='py-4'>{data.discount.percentage.toFixed(2)}</div>
+        <div className='grid grid-cols-2 '>
+          <div className='py-4 border-r border-black'>{data.discount.percentage.toFixed(2)}</div>
           <div className='py-4 text-end p-1'>{data.discount.amt.toFixed(2)}</div>
         </div>
       </td>

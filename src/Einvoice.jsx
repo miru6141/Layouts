@@ -105,7 +105,7 @@ console.log(invoiceData.items.length);
                 <th className='border-l-2 border-black text-end   px-1 font-medium '>CGST <br />Rate</th>
                 <th className='border-l-2 border-black text-end   px-1 font-medium '>CGST <br />Amount</th>
                 <th className='border-l-2 border-black text-end   px-1 font-medium '>SGST <br />Rate</th>
-                <th className='border-l-2 border-black text-end   px-1 font-medium '>SCGST <br />Amount</th>
+                <th className='border-l-2 border-black text-end   px-1 font-medium '>SGST <br />Amount</th>
                 <th className='border-l-2 border-black text-end   px-1 font-medium '>Amount(` )</th>
               </tr>
              </thead>
@@ -193,7 +193,6 @@ console.log(invoiceData.items.length);
                     <td></td>
                     <td></td>
                     <td></td>
-                   
                     <td></td>
                     <td></td>
                     <td className='p-1 font-bold text-end'>Grand Total</td>

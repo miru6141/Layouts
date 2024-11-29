@@ -2,27 +2,18 @@ import React, { useState, useRef, useEffect } from "react";
 import Barcode from "./Barcode";
 import BarcodeData from "./assets/BarcodeData.json";
 
-export const PrintBarcode = () => {
+export const Barcode3insample = () => {
   const [settings, setSettings] = useState({
-    rows: 6,
-    cols: 5,
+    rows: 5,
+    cols: 2,
     hspace: 0,
-    Vspace: 0,
-    Swidth: 151,
-    Sheight: 181,
-    Pwidth: 793,
-    Pheight: 1123,
-    mtop: 0,
-    mbottom: 0,
-    mleft: 0,
-    mright: 0,
-    units:'px',
-    barcode_type:null,
-    select_font:null,
-    font_size:10,
-
+    Vspace: 0.04,
+    width: 2,
+    height: 1.5,
+    Pwidth: 4,
+    Pheight: 8,
     blank_space: 0, // Number of blank spaces
-    stickers_space: 0, // Number of stickers to print
+    page: 0, // Number of stickers to print
   });
 
   const handleChange = (e) => {
@@ -42,16 +33,14 @@ export const PrintBarcode = () => {
       const originalContent = document.body.innerHTML;
 
       document.body.innerHTML = `
-      <div c
+      <div 
         style="
-            display: grid; 
-          width: ${settings.Pwidth}${settings.units}; 
-          height: ${settings.Pheight}${settings.units}; 
+          display: grid; 
+          width: ${settings.Pwidth}in; 
+          height: ${settings.Pheight}in; 
           margin: 2 auto; 
           grid-template-rows: repeat(${settings.rows}, 1fr); 
           grid-template-columns: repeat(${settings.cols}, 1fr);
-          transform: scale(1.5); /* Apply 150% scaling */
-          transform-origin: top left; /* Adjust origin for scaling */
         ">
         ${printContent}
       </div>`;
@@ -68,7 +57,7 @@ export const PrintBarcode = () => {
   // Logic to determine whether to render blank or filled stickers
   const getStickerContent = (index) => {
     if (index < settings.blank_space) return ""; // Render blank stickers for the first `blank_space`
-    if (index < settings.blank_space + settings.stickers_space) return generatedCode; // Render filled stickers for the next `page`
+    if (index < settings.blank_space + settings.page) return generatedCode; // Render filled stickers for the next `page`
     return ""; // Render blank stickers for the remaining slots
   };
 
@@ -124,7 +113,7 @@ export const PrintBarcode = () => {
             Stickers to Print :
             <input
               type="number"
-              name="stickers_space"
+              name="page"
               onChange={handleChange}
               className="border w-14 h-6 ml-2"
               value={settings.page}
@@ -141,17 +130,12 @@ export const PrintBarcode = () => {
 
         <div
           ref={printRef}
-          className="grid items-center p-4 sc "
+          className="grid items-center p-4 "
           style={{
             gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
             gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
-            width: `${settings.Pwidth}${settings.units}`,
-            height: `${settings.Pheight}${settings.units}`,
-            marginLeft: `${settings.mleft}${settings.units}`,
-            marginRight: `${settings.mright}${settings.units}`,
-            marginTop: `${settings.mtop}${settings.units}`,
-            marginBottom: `${settings.mbottom}${settings.units}`,
-       
+            width: `${settings.Pwidth}in`,
+            height: `${settings.Pheight}in`,
             transition: "all 0.3s ease-in-out",
           }}
         >
@@ -160,10 +144,10 @@ export const PrintBarcode = () => {
               key={index}
               className="p-0 border"
               style={{
-                height: `${settings.Sheight}${settings.units}`,
-                width: `${settings.Swidth}${settings.units}`,
-                marginBlock: `${settings.Vspace}${settings.units}`,
-                marginInline: `${settings.hspace}${settings.units}`,
+                height: `${settings.height}in`,
+                width: `${settings.width}in`,
+                marginBlock: `${settings.Vspace}in`,
+                marginInline: `${settings.hspace}in`,
                 transition: "all 0.3s ease-in-out",
               }}
             >
@@ -197,3 +181,4 @@ export const PrintBarcode = () => {
     </>
   );
 };
+export default Barcode3insample;

@@ -11,15 +11,19 @@ function BarcodeLayoutSetting() {
     cols: 0,
     hspace: 0,
     Vspace: 0,
-    width: null,
-    height: null,
+    Swidth: null,
+    Sheight: null,
     Pwidth: null,
     Pheight: null,
-    mtop: null,
-    mbottom: null,
+    mtop: 0,
+    mbottom: 0,
     mleft: null,
-    mright: null,
-    units:'MM'
+    mright: 0,
+    units:'MM',
+    barcode_type:null,
+    select_font:null,
+    font_size:10,
+
   });
 
   const [generatedCode, setGeneratedCode] = useState(""); // For the generated barcode
@@ -36,17 +40,34 @@ function BarcodeLayoutSetting() {
 
 
   const handleGenerate = () => {
-    let randomDigits = [];
-    for (let i = 0; i < 9; i++) {
-      let digit = Math.floor(Math.random() * 10);
-      randomDigits.push(digit);
+
+     if( settings.barcode_type==='EAN13'){
+      let randomDigits = [];
+      for (let i = 0; i < 9; i++) {
+        let digit = Math.floor(Math.random() * 10);
+        randomDigits.push(digit);
+      }
+  
+      const AllDigits = randomDigits.join("");
+      const prefixValue = "890";
+      const newVlaue = `${prefixValue}${AllDigits}`;
+      const checkDigit = calculateCheckDigit(newVlaue);
+      setGeneratedCode(`${newVlaue}${checkDigit}`);
+     }
+     if(settings.barcode_type==='CODE128'){
+      let randomDigits = [];
+    for (let i = 0; i < 10; i++) {
+      // Generate a random alphanumeric string
+      const charSet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let char = charSet[Math.floor(Math.random() * charSet.length)];
+      randomDigits.push(char);
     }
 
-    const AllDigits = randomDigits.join("");
-    const prefixValue = "890";
-    const newVlaue = `${prefixValue}${AllDigits}`;
-    const checkDigit = calculateCheckDigit(newVlaue);
-    setGeneratedCode(`${newVlaue}${checkDigit}`);
+    const generatedValue = randomDigits.join("");
+    setGeneratedCode(generatedValue);
+     }
+    
+   
   };
 
   // Function to calculate the EAN-13 check digit
@@ -57,29 +78,86 @@ function BarcodeLayoutSetting() {
     return (10 - (sum % 10)) % 10; // Calculate the check digit
   };
 
-  // Universal change handler
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSettings((prev) => ({
-      ...prev,
-      [name]: value === '' ? '' : (value), // Number(value) Convert value to number if not empty
-    }));
+  
+    setSettings((prev) => {
+      if (name === "papersize") {
+        if (value === "A4") {
+          return {
+            ...prev,
+            Pwidth: 210, 
+            Pheight: 297,
+            Swidth:40,
+            Sheight:48,
+            rows:6,
+            cols:5,
+            [name]: value,
+          };
+        } else if (value === "4in") {
+          return {
+            ...prev,
+            Pwidth: 105, // 4 inches in mm
+            Pheight: 123, // 4 inches in mm
+            Swidth:50,
+            Sheight:38,
+            rows:3,
+            cols:2,
+            [name]: value, // Update the selected paper size
+          };
+        }
+      }
+      return {
+        ...prev,
+        [name]: value === '' ? 0 : value, // Handle other fields
+      };
+    });
   };
+  
+       
+  // const conversionFactors = {
+  //   mm: { mm: 1, CM: 0.1, Inch: 0.0393701, px: 3.78 },
+  //   CM: { MM: 10, CM: 1, Inch: 0.393701, Pixels: 37.8 },
+  //   Inch: { MM: 25.4, CM: 2.54, Inch: 1, Pixels: 96 },
+  //   px: { mm: 0.264583, CM: 0.0264583, Inch: 0.0104167, px: 1 },
+  // };
+
+  //console.log(settings.units)
+
+  
+
+  // const handleUnitChange = (e) => {
+  //   const newUnit = e.target.value;
+  //   const currentUnit = settings.units;
+
+    // Convert all numeric values in `settings` to the new unit
+  //   const updatedSettings = Object.fromEntries(
+  //     Object.entries(settings).map(([key, value]) => {
+  //       if (typeof value === 'number' && !isNaN(value)) {
+  //         return [key, value * conversionFactors[currentUnit][newUnit]];
+  //       }
+  //       return [key, value];
+  //     })
+  //   );
+
+  //   setSettings({ ...updatedSettings, units: newUnit });
+ //  };
 
   
 
   return (
     <>
-    <div className="p-4 space-y-4 grid grid-cols-3 bg-gray-100 ">
+    <div className="p-4  space-y-4 grid grid-cols-3 bg-gray-100 ">
       {/* Input for Rows and Columns */}
       <div className="flex flex-col space-x-4 space-y-4  p-4 gap-5 col-span-1  ">
 
       <div className='ml-4'>
 
       
-      <select name="barcode_type" id="" className='border text-[0.6rem] w-[7.5rem] h-[1.25rem]' size={1}>
-        <option value="EAN 13">EAN 13</option>
-        <option value="CODE 128">CODE 128</option>
+      <select name="barcode_type" id="" className='border text-[0.6rem] w-[7.5rem] h-[1.25rem]' size={1} value={settings.barcode_type} onChange={handleChange}>
+        <option value="EAN13" >EAN 13</option>
+        <option value="CODE128">CODE 128</option>
         <option value="UPC">UPC</option>
       </select>
 
@@ -92,17 +170,13 @@ function BarcodeLayoutSetting() {
 
       </div>
     
-
-
-
         <div className="flex text-[10px] gap-7 ml-4">
           <div className="flex flex-col">
             <label htmlFor="">Paper Size</label>
-            <select id="papersize" name="papersize" className="border" size={1}>
+            <select id="papersize" name="papersize" className="border" size={1} onChange={handleChange} >
               <option value="A4">A4</option>
-              <option value="A5">A5</option>
-              <option value="Letter">Letter</option>
-              <option value="A3">A3</option>
+              <option value="4in">4inches</option>
+             
             </select>
           </div>
           <div className="flex flex-col">
@@ -128,10 +202,10 @@ function BarcodeLayoutSetting() {
           <div className="flex flex-col">
             <label htmlFor="units">units</label>
             <select id="units"  name="units"   value={settings.units} className="border" size={1} onChange={handleChange}>
-              <option value="MM">MM</option>
-              <option value="CM">CM</option>
-              <option value="Inch">Inch</option>
-              <option value="Pixel">Pixels</option>
+              <option value="mm">MM</option>
+              <option value="cm">CM</option>
+              <option value="in">Inch</option>
+              <option value="px">Pixels</option>
             </select>
           </div>
         </div>
@@ -141,15 +215,25 @@ function BarcodeLayoutSetting() {
 
             <div className='flex flex-col text-[10px]'>
             <label htmlFor="">Font Name</label>
-            <select name="select_font" id="" className='border' size={1} >
-                <option value="Poppins">Poppins</option>
-                <option value="Sans">Sans</option>
-              </select>
+            <select
+        name="select_font"
+        id="select_font"
+        className="border"
+        size={1}
+        value={settings.select_font}
+        onChange={ handleChange}
+      >
+        <option value="Poppins">Poppins</option>
+        <option value="Sans-Serif">Sans-Serif</option>
+        <option value="Arial">Arial</option>
+        <option value="italic">Italic</option>
+        <option value="Bold">Bold</option>
+      </select>
             </div>
 
             <div className='flex flex-col text-[10px] '>
             <label htmlFor=""> Font Size</label>
-            <input type="numbers"  className='border  p-1  w-[3.5rem] h-[1.25rem]'/>
+            <input type="numbers"  className='border  p-1  w-[3.5rem] h-[1.25rem]' name='font_size' onChange={handleChange}/>
             </div>
 
           </div>
@@ -183,38 +267,7 @@ function BarcodeLayoutSetting() {
                 className="border  p-1 w-[3.5rem] h-[1.25rem]" />
            </div>
 
-          {/* <div className="space-y-4">
-            <div className=" flex gap-16">
-              <label htmlFor="">Row</label>
-              <input
-                type="number"
-                name="rows"
-                value={settings.rows || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-            <div className="flex gap-14">
-              <label htmlFor="">Column</label>
-              <input
-                type="number"
-                name="cols"
-                value={settings.cols || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-            <div className="flex gap-14">
-              <label htmlFor="">V Space</label>
-              <input
-                type="number"
-                name="Vspace"
-                value={settings.Vspace || ''}
-                onChange={handleChange}
-                className="border  p-1 w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-          </div> */}
+          
           <div className="flex gap-[4rem]">
 
           <div className='flex flex-col gap-[1.5rem]'>
@@ -225,14 +278,14 @@ function BarcodeLayoutSetting() {
 
            <div className='flex flex-col gap-4'>
                     <input type="number"
-                name="width"
-                value={settings.width || ''}
+                name="Swidth"
+                value={settings.Swidth || ''}
                 onChange={handleChange}
                 className="border  p-1  w-[3.5rem] h-[1.25rem]"/>
  
                 <input type="number"
-                name="height"
-                value={settings.height || ''}
+                name="Sheight"
+                value={settings.Sheight || ''}
                 onChange={handleChange}
                 className="border  p-1  w-[3.5rem] h-[1.25rem]" />
 
@@ -242,36 +295,7 @@ function BarcodeLayoutSetting() {
                 onChange={handleChange}
                 className="border  p-1  w-[3.5rem] h-[1.25rem]" />
            </div>
-            {/* <div className="flex gap-16">
-              <label htmlFor="">Width</label>
-              <input
-                type="number"
-                name="width"
-                value={settings.width || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-            <div className="flex gap-16">
-              <label htmlFor="">Height</label>
-              <input
-                type="number"
-                name="height"
-                value={settings.height || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-            <div className="flex gap-14">
-              <label htmlFor="">H Space</label>
-              <input
-                type="number"
-                name="hspace"
-                value={settings.hspace || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div> */}
+            
           </div>
         </div>
 
@@ -326,74 +350,16 @@ function BarcodeLayoutSetting() {
      </div>
 
      
-        {/* <div className="flex text-[10px] gap-2">
-
-          <div className="space-y-4">
-
-            <div className="space-x-10">
-              <label htmlFor="">Left</label>
-              <input
-                type="number"
-                name="mleft"
-                value={settings.mleft || ''}
-                onChange={handleChange}
-                className="border  p-1 w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-
-            <div className="space-x-8">
-              <label htmlFor="">Right</label>
-              <input
-                type="number"
-                name="mright"
-                value={settings.mright || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-
-          </div>
-
-          <div className="space-y-4 ml-16">
-
-            <div className="space-x-14">
-              <label htmlFor="">Top</label>
-              <input
-                type="number"
-                name="mtop"
-                value={settings.mtop || ''}
-                onChange={handleChange}
-                className="border  p-1 w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-
-            <div className="space-x-10">
-              <label htmlFor="">Bottom</label>
-              <input
-                type="number"
-                name="mbottom"
-                value={settings.mbottom || ''}
-                onChange={handleChange}
-                className="border  p-1  w-[3.5rem] h-[1.25rem]"
-              />
-            </div>
-
-          </div>
-
-        </div> */}
 
       </div>
 
       {/* Dynamic Grid */}
       <div
-        className="grid col-span-2 border bg-white  border-black w-[650px] h-[530px] overflow-hidden scroll-container"
+        className="grid col-span-2 border  bg-white   border-black overflow-hidden scroll-container "
         style={{
           //gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
-          //gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
-          marginLeft: `${settings.mleft}px`,
-          marginRight: `${settings.mright}px`,
-          marginTop: `${settings.mtop}px`,
-          marginBottom: `${settings.mbottom}px`,
+          gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
+         
           position: "relative",
            overflow:'scroll'
         }}
@@ -404,11 +370,14 @@ function BarcodeLayoutSetting() {
             gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
             gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
             position: "absolute",
-            width: `${settings.Pwidth}px`,
-            height: `${settings.Pheight}px`,
+            width: `${settings.Pwidth}${settings.units}`,
+            height: `${settings.Pheight}${settings.units}`,
             transition: "all 0.3s ease-in-out",
-            
-          
+            marginLeft: `${settings.mleft}${settings.units}`,
+            marginRight: `${settings.mright}${settings.units}`,
+            marginTop: `${settings.mtop}${settings.units}`,
+            marginBottom: `${settings.mbottom}${settings.units}`,
+       
           }}
         >
           {Array.from({ length: settings.rows * settings.cols }, (_, index) => (
@@ -416,32 +385,45 @@ function BarcodeLayoutSetting() {
               key={index}
               className="border  "
               style={{
-                height: `${settings.height}px`,
-                width: `${settings.width}px`,
-                marginBlock: `${settings.Vspace}px`,
-                marginInline: `${settings.hspace}px`,
+                height: `${settings.Sheight}${settings.units}`,
+                width: `${settings.Swidth}${settings.units}`,
+                marginBlock: `${settings.Vspace}${settings.units}`,
+                marginInline: `${settings.hspace}${settings.units}`,
                 transition: "all 0.3s ease-in-out",
               }}
             >
               {generatedCode && (
             <>
-             <p className="text-start mb-2 text-[10px]">{`BLACK CARDAMOM 25 GM`}</p>
+
+              <div className='p-1' style={{
+                 fontSize:`${settings.font_size}px`,
+                 fontFamily:`${settings.select_font}`
+              }}>
+              <p className="text-start mb-1 ">{`BLACK CARDAMOM 25 GM`}</p>
              <div className="flex justify-between">
-             <p className=" text-start text-[10px] ">
+             <p className=" text-start  ">
                 Size: {BarcodeData.size} 
               </p>
-              <p className=" text-start text-[10px] ">
+              <p className=" text-start  ">
                 Net Qty: {BarcodeData.net_qty} 
               </p>
              </div>
              
              
-              <Barcode value={generatedCode}  />
-              <p className="text-[12px] font-extrabold  text-center ">{`MRP ₹ ${BarcodeData.mrp}`}</p>
-              <p className="text-[10px]  text-center font-semibold">(Inclusive of All Taxes)</p>
-              <p className="text-[12px] text-start font-extrabold">{`OFFER ₹ ${BarcodeData.offer}`}</p>
-              <p className="text-center pl-4 text-[10px]  underline font-bold ">{BarcodeData.company_name}</p>
+              <Barcode value={generatedCode} format={settings.barcode_type} />
+              <p className=" font-extrabold  text-center  " style={{
+                fontSize:`${settings.font_size}px`
+              }}>{`MRP ₹ ${BarcodeData.mrp}`}
+          
+              </p>
+              <p className=" text-center font-semibold">(Inclusive of All Taxes)</p>
+              <p className="  text-start font-extrabold"  style={{
+                fontSize:`${settings.font_size}px`
+              }}>{`OFFER ₹ ${BarcodeData.offer}`}</p>
+              <p className="text-center pl-4  underline font-bold ">{BarcodeData.company_name}</p>
 
+              </div>
+            
           
             </>
           )}
@@ -484,7 +466,7 @@ function BarcodeLayoutSetting() {
           onClick={handleCloseModal}
         >
           <div
-            className="bg-white p-8 rounded shadow-lg max-h-screen overflow-y-auto"
+            className="bg-white p-8 rounded shadow-lg max-h-screen   overflow-y-auto "
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -493,7 +475,7 @@ function BarcodeLayoutSetting() {
             >
               &times;
             </button>
-            <BarcodePreview  value={settings}/>
+            <BarcodePreview  settings={settings}/>
           </div>
         </div>
       )}
