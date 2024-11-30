@@ -46,23 +46,38 @@ console.log(invoiceData.items.length);
      
         <div className='grid  grid-cols-2  font-medium   ibm-plex-sans-regular '>
 
-          <div className='border-r-2 border-b-2  border-gray-600 p-1  '>
+          <div className='border-r-2 border-b-2 flex flex-row  border-gray-600 p-1 gap-8  '>
                <ul>
-               <li>{`Invoice No.`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`: ${invoiceData.invoice.number}`}</li>
+               <li>Invoice No</li>
+                <li>Dated .</li>
+                <li>Place of Supply</li>
+                <li>Reverse Charge</li>
+                <li>GR/RR No.</li>
+               </ul>
 
-                <li>{`Dated .`}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {`: ${invoiceData.invoice.date}`}</li>
-                <li>{`Place of Supply.      : ${invoiceData.invoice.place_of_supply}`}</li>
-                <li>{`Reverse Charge.      : ${invoiceData.invoice.reverse_charge || ''}`}</li>
-                <li>{`GR/RR No.`} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      {`: ${invoiceData.invoice.gr_rr || ''}`}</li>
+               <ul>
+               <li>{`: ${invoiceData.invoice.number}`}</li>
+                <li>{`: ${invoiceData.invoice.date}`}</li>
+                <li>{`: ${invoiceData.invoice.place_of_supply}`}</li>
+                <li>{`: ${invoiceData.invoice.reverse_charge || ''}`}</li>
+                <li>{`: ${invoiceData.invoice.gr_rr || ''}`}</li>
                </ul>
           </div>
 
-          <div className='p-1'>
+          <div className='p-1 flex flex-row gap-8'>
+
           <ul>
-                <li>{`Transport `}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     {` : ${invoiceData.invoice.transportation || ''}`}</li>
-                <li>{`Vehicle No.`}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    {` : ${invoiceData.invoice.vehicle_number || ''}`}</li>
-                <li>{`Station`} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {`    : ${invoiceData.invoice.station || ''}`}</li>
-                <li>{`E-Way Bill No.`} &nbsp; {`: ${invoiceData.invoice.E_bay_bill || ''}`}</li>
+               <li>Transport</li>
+                <li>Vehicle No.</li>
+                <li>Station</li>
+                <li>E-Way Bill No.</li>
+               </ul>
+
+               <ul>
+               <li>{`: ${invoiceData.invoice.transportation || ''}`}</li>
+                <li>{`: ${invoiceData.invoice.vehicle_number || ''}`}</li>
+                <li>{`: ${invoiceData.invoice.station || ''}`}</li>
+                <li>{`: ${invoiceData.invoice.E_bay_bill || ''}`}</li>
                </ul>
           </div>
                
@@ -137,8 +152,8 @@ console.log(invoiceData.items.length);
              
                      
              </tbody>
- 
-               
+                 
+              
             
           </table>
          
@@ -148,62 +163,43 @@ console.log(invoiceData.items.length);
           { (invoiceData.items.length>5 && pageCount===1)  &&
              <div className='pgbreak'></div>}
          
-         
-          <div className="">
+        
 
-
-            
                 <table className="w-full text-[13px] border-t border-gray-600">
-                    <tfoot>
 
-
+                <tfoot>
                     <tr>
-                    <td colSpan={10}></td>
+                    <td colSpan={10} className='text-end' >Less : Round off(-)</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td> </td>
-                    
-
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td className='text-center'></td>
-                    <td className='  text-end border-l-2 border-black p-1'>{invoiceData.totals.grand_total|| ''}</td>
-               </tr>
-                    <tr>
-                    <td colSpan={10}></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td> </td>
-                    
-
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td className='text-center'>Less   :  Round off(-)</td>
-                    <td className='  text-end border-l-2 border-black p-1'>{invoiceData.totals.roundoff|| ''}</td>
+                    <td className='  text-end border-l-2 border-black p-1 ' colSpan={1}>{invoiceData.totals.roundoff|| ''}</td>
                </tr>
                <tr className='border-t-2 border-gray-600 '>
-                    <td colSpan={10}></td>
+                    <td colSpan={10} className='p-1 font-bold text-end'>Grand Total</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td className='p-1 font-bold text-end'>Grand Total</td>
-                    <td className='p-1 font-bold'>{invoiceData.totals.unit}</td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td className=' border-l-2 border-b-2 text-end border-gray-600 p-1 font-bold' >{invoiceData.totals.grand_total}</td>
                </tr>
 
                     </tfoot>
+            
+                    
                 </table>
-            </div>
+           
 
            
           <div className='grid grid-cols-3 '> 
@@ -248,15 +244,14 @@ console.log(invoiceData.items.length);
                  <tr className='mt-0.5 border-t border-r border-black'>
                          <td className='text-start'>Total</td>
                          <td className=' text-start'>{invoiceData.totals.total_taxable_value.toFixed(2)}</td>
-
-                       <td className="text-start">
+                         <td className="text-start">
                           {invoiceData.totals.total_gst_amount.toFixed(2)}
-                       </td>
+                         </td>
                       
-                       <td className="">
+                         <td className="">
                             {invoiceData.totals.sgst_amount || ''}
-                       </td>
-                       <td className=' text-start'>{invoiceData.totals.total_tax}</td>
+                         </td>
+                         <td className=' text-start'>{invoiceData.totals.total_tax}</td>
                  </tr>
 
                    </tbody>

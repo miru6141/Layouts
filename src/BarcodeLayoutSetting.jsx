@@ -26,7 +26,7 @@ function BarcodeLayoutSetting() {
 
   });
 
-  const [generatedCode, setGeneratedCode] = useState(""); // For the generated barcode
+  const [generatedCode, setGeneratedCode] = useState(""); 
  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -51,7 +51,7 @@ function BarcodeLayoutSetting() {
       const AllDigits = randomDigits.join("");
       const prefixValue = "890";
       const newVlaue = `${prefixValue}${AllDigits}`;
-      const checkDigit = calculateCheckDigit(newVlaue);
+      const checkDigit = calculateCheckDigitforEAN13(newVlaue);
       setGeneratedCode(`${newVlaue}${checkDigit}`);
      }
      if(settings.barcode_type==='CODE128'){
@@ -66,17 +66,47 @@ function BarcodeLayoutSetting() {
     const generatedValue = randomDigits.join("");
     setGeneratedCode(generatedValue);
      }
+
+
+if (settings.barcode_type === 'UPC') {
+  let randomDigits = [];
+  for (let i = 0; i < 11; i++) {
+    let digit = Math.floor(Math.random() * 10);
+    randomDigits.push(digit);
+  }
+
+  const AllDigits = randomDigits.join("");
+  const checkDigit = calculateCheckDigitforUPC(AllDigits);
+  setGeneratedCode(`${AllDigits}${checkDigit}`);
+}
     
    
   };
 
   // Function to calculate the EAN-13 check digit
-  const calculateCheckDigit = (number) => {
+  const calculateCheckDigitforEAN13 = (number) => {
     const sum = [...number]
       .map((digit, i) => (i % 2 === 0 ? +digit : +digit * 3))
       .reduce((acc, val) => acc + val, 0);
     return (10 - (sum % 10)) % 10; // Calculate the check digit
   };
+
+
+
+
+  function calculateCheckDigitforUPC(code) {
+    let sum = 0;
+    for (let i = 0; i < code.length; i++) {
+      let digit = parseInt(code[i]);
+      if (i % 2 === 0) {
+        sum += digit * 3; // Multiply odd-position digits by 3
+      } else {
+        sum += digit; // Add even-position digits
+      }
+    }
+    const modulo = sum % 10;
+    return modulo === 0 ? 0 : 10 - modulo;
+  }
 
  
   const handleChange = (e) => {
@@ -104,6 +134,17 @@ function BarcodeLayoutSetting() {
             Sheight:38,
             rows:3,
             cols:2,
+            [name]: value, // Update the selected paper size
+          };
+        }  else if (value === "Custom") {
+          return {
+            ...prev,
+            Pwidth: 0, // 4 inches in mm
+            Pheight: 0, // 4 inches in mm
+            Swidth:0,
+            Sheight:0,
+            rows:0,
+            cols:0,
             [name]: value, // Update the selected paper size
           };
         }
@@ -148,9 +189,9 @@ function BarcodeLayoutSetting() {
 
   return (
     <>
-    <div className="p-4  space-y-4 grid grid-cols-3 bg-gray-100 ">
-      {/* Input for Rows and Columns */}
-      <div className="flex flex-col space-x-4 space-y-4  p-4 gap-5 col-span-1  ">
+    <div className="p-4  space-y-4 grid md:grid-cols-3 grid-row bg-gray-100 ">
+     
+      <div className="flex flex-col space-x-4 space-y-4  p-4 gap-5 md:col-span-1 w-full bg-gray-100 ">
 
       <div className='ml-4'>
 
@@ -170,15 +211,32 @@ function BarcodeLayoutSetting() {
 
       </div>
     
-        <div className="flex text-[10px] gap-7 ml-4">
+        <div className="flex  md:flex-row flex-col text-[10px] gap-16 ml-4">
+
+          <div className='flex flex-row gap-11'>
           <div className="flex flex-col">
             <label htmlFor="">Paper Size</label>
-            <select id="papersize" name="papersize" className="border" size={1} onChange={handleChange} >
+            <select id="papersize" name="papersize" className="border  w-[3.5rem] h-[1.25rem]"  onChange={handleChange} >
               <option value="A4">A4</option>
               <option value="4in">4inches</option>
+              <option value="Custom">Custom</option>
+
              
             </select>
           </div>
+          <div className="flex flex-col">
+            <label htmlFor="units">units</label>
+            <select id="units"  name="units"   value={settings.units} className="border  w-[3.5rem] h-[1.25rem]"   onChange={handleChange}>
+              <option value="mm">MM</option>
+              <option value="cm">CM</option>
+              <option value="in">Inch</option>
+              <option value="px">Pixels</option>
+            </select>
+          </div>
+          </div>
+
+          <div className='flex flex-row gap-11'>
+             
           <div className="flex flex-col">
             <label htmlFor="">Width</label>
             <input
@@ -199,15 +257,11 @@ function BarcodeLayoutSetting() {
               className="border  p-1  w-[3.5rem] h-[1.25rem]"
             />
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="units">units</label>
-            <select id="units"  name="units"   value={settings.units} className="border" size={1} onChange={handleChange}>
-              <option value="mm">MM</option>
-              <option value="cm">CM</option>
-              <option value="in">Inch</option>
-              <option value="px">Pixels</option>
-            </select>
+          
+
           </div>
+         
+         
         </div>
           
           <div className='flex gap-8'>
@@ -239,9 +293,11 @@ function BarcodeLayoutSetting() {
           </div>
 
         <p className="text-sm">{`Label Setup (${settings.units})`}</p>
-        <div className="flex text-[10px] gap-16">
-
-           <div className='flex flex-col gap-6'>
+        <div className="flex md:flex-row flex-col  text-[10px] gap-16">
+             
+             <div className='flex  gap-[4rem]'>  
+              
+             <div className='flex flex-col  gap-6'>
                 <label htmlFor="">Row</label>
                 <label htmlFor="">Column</label>
                 <label htmlFor="">VSpace</label>
@@ -265,10 +321,13 @@ function BarcodeLayoutSetting() {
                 value={settings.Vspace || ''}
                 onChange={handleChange}
                 className="border  p-1 w-[3.5rem] h-[1.25rem]" />
-           </div>
+           </div>    
+              
+             </div>
+          
 
           
-          <div className="flex gap-[4rem]">
+          <div className="flex  gap-[4rem]">
 
           <div className='flex flex-col gap-[1.5rem]'>
                 <label htmlFor="">Width</label>
@@ -301,9 +360,9 @@ function BarcodeLayoutSetting() {
 
         <p className="text-sm">{`Page Margins (${(settings.units)})`} </p>
 
-    <div className='flex gap-[4rem]'>
+    <div className='flex md:flex-row flex-col gap-[4rem]'>
 
-       <div className="flex gap-[4.9rem] text-[10px] ">
+       <div className="flex gap-[4.7rem] text-[10px] ">
          <div className='flex flex-col gap-[1.5rem]'>
           <label htmlFor="">Left</label>
           <label htmlFor="">Right</label>
@@ -325,7 +384,7 @@ function BarcodeLayoutSetting() {
          </div>
        </div>
 
-        <div className="flex gap-[4rem] text-[10px] ">
+        <div className="flex gap-[4rem]  text-[10px] ">
 
           <div className='flex flex-col gap-[1.5rem]'>
            <label htmlFor="">Top</label>
@@ -355,9 +414,9 @@ function BarcodeLayoutSetting() {
 
       {/* Dynamic Grid */}
       <div
-        className="grid col-span-2 border  bg-white   border-black overflow-hidden scroll-container "
+        className="grid md:col-span-2 border  bg-white   border-black overflow-hidden scroll-container "
         style={{
-          //gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
+          gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
           gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
          
           position: "relative",
@@ -365,7 +424,7 @@ function BarcodeLayoutSetting() {
         }}
       >
         <div
-          className="grid  border "
+          className="grid  border"
           style={{
             gridTemplateRows: `repeat(${settings.rows}, 1fr)`,
             gridTemplateColumns: `repeat(${settings.cols}, 1fr)`,
@@ -437,9 +496,9 @@ function BarcodeLayoutSetting() {
      
     </div>
        
-     <div className='grid grid-cols-3 p-[0.5rem] bg-gray-100'>
+     <div className='grid md:grid-cols-3 grid-cols-2 p-[0.5rem] bg-gray-100 '>
 
-         <div className='text-[12px] ml-[2.5rem] col-span-1 '>
+         <div className='text-[12px] ml-[2.5rem] md:col-span-1 '>
 
            <div className=' flex gap-4'>
              <input type="checkbox" />
@@ -452,7 +511,7 @@ function BarcodeLayoutSetting() {
 
       </div>
       
-      <div className='text-end col-span-2'>
+      <div className='text-end md:col-span-2'>
       <button
         className="bg-blue-600 mr-[0.75rem] px-2 py-[1px] text-white"
         onClick={handleOpenModal}

@@ -15,6 +15,7 @@ import { PrintBarcode } from './PrintBarcode'
 import BarcodeProductSettings from './BarcodeProductSettings'
 import Code128Barcode from './Code128Barcode'
 import Sample from './Sample'
+import Data from './Data'
 function App() {
 
   return (
@@ -26,15 +27,16 @@ function App() {
     {/* <Thermal4inches/> */}
     {/* <Ean_13Barcode/> */}
     {/* <Ean13A45s/> */}
-    <BarcodeLayoutSetting/>
+    {/* <BarcodeLayoutSetting/> */}
     {/* <Einvoice/> */}
     {/* <BarcodeSettings/> */}
     {/* <GridExample/> */}
     {/* <BarcodePreview/> */}
-    {/* <PrintBarcode/> */}
+    <PrintBarcode/>
     {/* <BarcodeProductSettings/> */}
     {/* <Code128Barcode/> */}
     {/* <Sample/> */}
+    {/* <Data/> */}
     </div>
   
        

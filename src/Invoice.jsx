@@ -1,4 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import InvoiceData from './assets/InvoiceData.json'
+
 
 const Invoice = () => {
 
@@ -28,7 +31,7 @@ if (totalItems <= firstPageRows) {
 console.log("Total pages:", pageCount);
 
 
-/*function convertNumberToWords(num,index) {
+function convertNumberToWords(num,index) {
   const belowTwenty = [
       "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", 
       "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", 
@@ -64,12 +67,10 @@ console.log("Total pages:", pageCount);
 }
 
 const numberInWords = convertNumberToWords(InvoiceData.totals.grand_total);
-console.log(numberInWords);  // Output: "five thousand five hundred twenty nine only" */
+console.log(numberInWords);  
 
 
 
-
- 
   return (
     <>
     
@@ -169,7 +170,7 @@ console.log(numberInWords);  // Output: "five thousand five hundred twenty nine 
    
 
     {/* Subsequent pages: Add a page break every 24 items after the first 20 */}
-    {index > 20 && (index - 20) % 30 === 0 && (
+    {index > 20 && (index - 20) % 40 === 0 && (
       <div className='pgbreak'></div>
     )}
 
@@ -208,6 +209,7 @@ console.log(numberInWords);  // Output: "five thousand five hundred twenty nine 
 
                </tbody>
                { Array.from({ length:(12)-InvoiceData.items.length }).map((_, i) => (
+                     
                       <tr key={`blank-${i}`} className="h-8">
                         <td className=" border-black"></td>
                         <td className="border-l border-black"></td>
@@ -249,7 +251,7 @@ console.log(numberInWords);  // Output: "five thousand five hundred twenty nine 
                  </tr>
                   </tfoot>
                  
-</>
+               </>
                  
             
          </table>
@@ -355,7 +357,7 @@ console.log(numberInWords);  // Output: "five thousand five hundred twenty nine 
 
           <div className='grid grid-cols-3 border-t border-black text-[10px] bg-gray-100 '>
               <div className=' grid col-span-2'>
-                  <p>{`Bill Amount In Words:$`}</p>
+                  <p>{`Bill Amount In Words:${numberInWords}`}</p>
               </div>
               <div className='flex justify-between p-1'>
                   <strong>GRAND TOTAL</strong>

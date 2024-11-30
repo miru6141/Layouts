@@ -4,7 +4,8 @@ import JsBarcode from "jsbarcode";
 
 const Barcode = ({ value,format}) => {
   const barcodeRef = useRef(null);
-
+      
+  
   useEffect(() => {
     if (value) {
       JsBarcode(barcodeRef.current, value, {

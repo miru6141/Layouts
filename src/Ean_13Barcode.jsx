@@ -33,7 +33,7 @@ const Ean_13Barcode = () => {
   };
 
   return (
-    <div className=" w-[4in] justify-items-start ">
+    <div className=" w-[4in] justify-items-center ">
       <h1 className="text-[10px]">EAN-13 Barcode Generator</h1>
 
       <input 

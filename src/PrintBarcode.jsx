@@ -42,7 +42,7 @@ export const PrintBarcode = () => {
       const originalContent = document.body.innerHTML;
 
       document.body.innerHTML = `
-      <div c
+      <div 
         style="
             display: grid; 
           width: ${settings.Pwidth}${settings.units}; 
