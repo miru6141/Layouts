@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import JsBarcode from "jsbarcode";
 
-const Barcode = ({ value,format}) => {
+const Barcode = ({ value,format,width,height,font,margin}) => {
   const barcodeRef = useRef(null);
       
   
@@ -11,14 +11,14 @@ const Barcode = ({ value,format}) => {
       JsBarcode(barcodeRef.current, value, {
         format: format, // EAN-13 format
         lineColor: "#000",
-        width: 1, // Adjusted bar width for better visibility
-        height: 35, // Height of the barcode
+        width: width, // Adjusted bar width for better visibility
+        height: height, // Height of the barcode
         displayValue: true, // Show the barcode value below
-        fontSize: 18, // Font size for the value text
-        margin: 10, // Margin around the barcode
+        fontSize: format==="CODE128"?font:18, // Font size for the value text
+        margin: format==="CODE128"?margin:10, // Margin around the barcode
       });
     }
-  }, [value]);
+  }, [value,height,width,font,margin]);
 
   return (
     <div

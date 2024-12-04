@@ -27,12 +27,12 @@ function App() {
     {/* <Thermal4inches/> */}
     {/* <Ean_13Barcode/> */}
     {/* <Ean13A45s/> */}
-    {/* <BarcodeLayoutSetting/> */}
+    <BarcodeLayoutSetting/>
     {/* <Einvoice/> */}
     {/* <BarcodeSettings/> */}
     {/* <GridExample/> */}
     {/* <BarcodePreview/> */}
-    <PrintBarcode/>
+    {/* <PrintBarcode/> */}
     {/* <BarcodeProductSettings/> */}
     {/* <Code128Barcode/> */}
     {/* <Sample/> */}

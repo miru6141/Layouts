@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Barcode from "./Barcode";
 import BarcodeData from "./assets/BarcodeData.json";
 import { BarcodePreview } from './BarcodePreview';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function BarcodeLayoutSetting() {
@@ -20,9 +21,14 @@ function BarcodeLayoutSetting() {
     mleft: null,
     mright: 0,
     units:'MM',
-    barcode_type:null,
+    barcode_type:"EAN13",
     select_font:null,
     font_size:10,
+    barcode_width:1,
+    barcode_height:20,
+    barcode_font:18,
+    barcode_margin:10,
+
 
   });
 
@@ -38,8 +44,11 @@ function BarcodeLayoutSetting() {
     setIsModalOpen(false);
   };
 
-
+ 
   const handleGenerate = () => {
+
+
+
 
      if( settings.barcode_type==='EAN13'){
       let randomDigits = [];
@@ -108,9 +117,65 @@ if (settings.barcode_type === 'UPC') {
     return modulo === 0 ? 0 : 10 - modulo;
   }
 
- 
+     const [widthExceeded, setWidthExceeded] = useState(false);
+    const [heightExceeded, setHeightExceeded] = useState(false);
+  
+
+    useEffect(() => {
+        if (settings.Swidth * settings.cols > settings.Pwidth && !widthExceeded) {
+            toast("The size of the sticker exceeds the paper width");
+            setWidthExceeded(true);
+          
+          
+        } else if (settings.Swidth * settings.cols <= settings.Pwidth && widthExceeded) {
+            setWidthExceeded(false);
+        }
+
+        if (settings.Sheight * settings.rows > settings.Pheight && !heightExceeded) {
+            toast("The size of the sticker exceeds the paper height");
+            setHeightExceeded(true);
+        } else if (settings.Sheight * settings.rows <= settings.Pheight && heightExceeded) {
+            setHeightExceeded(false);
+        }
+    }, [settings, widthExceeded, heightExceeded]);
+           
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+   
+
+    if (widthExceeded && (name === "Swidth" )) {
+    setSettings(prevSettings => ({
+        ...prevSettings,
+        Swidth: prevSettings.Swidth - 1
+    }));
+    return  // Exit the function after updating the state
+}
+
+    // Prevent changes if height is exceeded
+    if (heightExceeded && (name === "Sheight" )) {
+            setSettings(prevSettings => ({
+        ...prevSettings,
+        Sheight: prevSettings.Sheight - 1
+    }));
+        return; // Do nothing if height is exceeded and trying to update Sheight or rows
+    }
+
+       if (widthExceeded && ( name === "cols")) {
+    setSettings(prevSettings => ({
+        ...prevSettings,
+        cols: prevSettings.cols - 1
+    }));
+    return  // Exit the function after updating the state
+}
+    if (heightExceeded && ( name === "rows")) {
+            setSettings(prevSettings => ({
+        ...prevSettings,
+        rows: prevSettings.rows - 1
+    }));
+        return; // Do nothing if height is exceeded and trying to update Sheight or rows
+    }
   
     setSettings((prev) => {
       if (name === "papersize") {
@@ -184,11 +249,16 @@ if (settings.barcode_type === 'UPC') {
 
   //   setSettings({ ...updatedSettings, units: newUnit });
  //  };
-
-  
+        
+    
+     
+    
+           
 
   return (
     <>
+<ToastContainer/>
+
     <div className="p-4  space-y-4 grid md:grid-cols-3 grid-row bg-gray-100 ">
      
       <div className="flex flex-col space-x-4 space-y-4  p-4 gap-5 md:col-span-1 w-full bg-gray-100 ">
@@ -217,11 +287,11 @@ if (settings.barcode_type === 'UPC') {
           <div className="flex flex-col">
             <label htmlFor="">Paper Size</label>
             <select id="papersize" name="papersize" className="border  w-[3.5rem] h-[1.25rem]"  onChange={handleChange} >
+              
+              <option value="Custom">Custom</option>
               <option value="A4">A4</option>
               <option value="4in">4inches</option>
-              <option value="Custom">Custom</option>
-
-             
+              
             </select>
           </div>
           <div className="flex flex-col">
@@ -269,7 +339,7 @@ if (settings.barcode_type === 'UPC') {
 
             <div className='flex flex-col text-[10px]'>
             <label htmlFor="">Font Name</label>
-            <select
+        <select
         name="select_font"
         id="select_font"
         className="border"
@@ -304,6 +374,9 @@ if (settings.barcode_type === 'UPC') {
            </div>
 
            <div className='flex flex-col gap-4'>
+
+              
+
                     <input  type="number"
                 name="rows"
                 value={settings.rows || ''}
@@ -329,13 +402,15 @@ if (settings.barcode_type === 'UPC') {
           
           <div className="flex  gap-[4rem]">
 
-          <div className='flex flex-col gap-[1.5rem]'>
+          <div className='flex flex-col gap-[1.5rem]'>             
                 <label htmlFor="">Width</label>
                 <label htmlFor="">Height</label>
                 <label htmlFor="">HSpace</label>
            </div>
 
            <div className='flex flex-col gap-4'>
+
+
                     <input type="number"
                 name="Swidth"
                 value={settings.Swidth || ''}
@@ -358,11 +433,66 @@ if (settings.barcode_type === 'UPC') {
           </div>
         </div>
 
+        <p className="text-sm">{`Barcode Setup (${('px')})`} </p>
+
+        <div className='flex md:flex-row flex-col gap-[4rem]'>
+
+     <div className="flex gap-[4rem] text-[10px] ">
+     <div className='flex flex-col gap-[1.5rem]'>
+      <label htmlFor="">B-width</label>
+     <label htmlFor="">B-Height</label>
+     </div>
+
+  <div className='flex flex-col gap-4'>
+             <input  type="number"
+                name="barcode_width"
+                value={settings.barcode_width || ''}
+                onChange={handleChange}
+                className="border  p-1  w-[3.5rem] h-[1.25rem]"/>
+
+              <input type="number"
+                name="barcode_height"
+                value={settings.barcode_height || ''}
+                onChange={handleChange}
+                className="border  p-1  w-[3.5rem] h-[1.25rem]"/>
+          </div>
+          </div>
+  
+        <div className="flex gap-[4rem]  text-[10px] ">
+
+          <div className='flex flex-col gap-[1.5rem]'>
+          <label htmlFor="">Font</label>
+          <label htmlFor="">Margin</label>
+        </div>
+
+       <div className='flex flex-col gap-4'> 
+        <input type="number"
+         disabled={settings.barcode_type === "EAN13" || settings.barcode_type === "UPC"} 
+         name="barcode_font"
+         value={settings.barcode_font || ''}
+         onChange={handleChange}
+         className="border  p-1 w-[3.5rem] h-[1.25rem]"/>
+       
+      <input  type="number"
+       disabled={settings.barcode_type === "EAN13" || settings.barcode_type === "UPC"} 
+         name="barcode_margin"
+         value={settings.barcode_margin || ''}
+         onChange={handleChange}
+         className="border  p-1  w-[3.5rem] h-[1.25rem]" />
+     </div>
+
+   </div>
+
+  </div>
+
+
+      
+
         <p className="text-sm">{`Page Margins (${(settings.units)})`} </p>
 
     <div className='flex md:flex-row flex-col gap-[4rem]'>
 
-       <div className="flex gap-[4.7rem] text-[10px] ">
+       <div className="flex gap-[5rem] text-[10px] ">
          <div className='flex flex-col gap-[1.5rem]'>
           <label htmlFor="">Left</label>
           <label htmlFor="">Right</label>
@@ -469,7 +599,7 @@ if (settings.barcode_type === 'UPC') {
              </div>
              
              
-              <Barcode value={generatedCode} format={settings.barcode_type} />
+              <Barcode value={generatedCode} format={settings.barcode_type} width={settings.barcode_width} height={settings.barcode_height} font={settings.barcode_font} margin={settings.barcode_margin} />
               <p className=" font-extrabold  text-center  " style={{
                 fontSize:`${settings.font_size}px`
               }}>{`MRP ₹ ${BarcodeData.mrp}`}
@@ -534,7 +664,7 @@ if (settings.barcode_type === 'UPC') {
             >
               &times;
             </button>
-            <BarcodePreview  settings={settings}/>
+            <BarcodePreview  settings={settings} generatedCode={generatedCode}/>
           </div>
         </div>
       )}

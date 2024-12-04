@@ -3,13 +3,13 @@ import { useState, useRef } from "react";
 import Barcode from "./Barcode";
 import BarcodeData from "./assets/BarcodeData.json";
 
-export const BarcodePreview = ({settings}) => {
+export const BarcodePreview = ({settings,generatedCode}) => {
  
 
   
   
 
-  const [generatedCode] = useState("123456789101"); // For the generated barcode
+  // For the generated barcode
 
   const printRef = useRef(null);
 
@@ -73,8 +73,8 @@ export const BarcodePreview = ({settings}) => {
              </div>
              
              
-              <Barcode value={generatedCode} format={settings.barcode_type} />
-              <p className=" font-extrabold  text-center " style={{
+             <Barcode value={generatedCode} format={settings.barcode_type} width={settings.barcode_width} height={settings.barcode_height} font={settings.barcode_font} margin={settings.barcode_margin} />
+             <p className=" font-extrabold  text-center " style={{
                 fontSize:`${settings.font_size}px`
               }}>{`MRP ₹ ${BarcodeData.mrp}`}
           
